@@ -1,8 +1,8 @@
 base:
   data_path: null
   data_index: '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/fgadr_data_dict.pkl' # alternative way to build dataset. check README for more details
-  save_path: '/mnt/sda/haal02-data/results/classification_results/resnet50_full_fgadr_playground_ce_60/saves'
-  log_path: '/mnt/sda/haal02-data/results/classification_results/resnet50_full_fgadr_playground_60/logs'
+  save_path: '/mnt/sda/haal02-data/results/classification_results/resnet50_fgadr_07_05_2022/saves'
+  log_path: '/mnt/sda/haal02-data/results/classification_results/resnet50_fgadr_07_05_2022/logs'
   device: cuda
   random_seed: 1
 
