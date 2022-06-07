@@ -33,7 +33,7 @@ class DatasetFromDict(Dataset):
         return len(self.imgs)
 
     def __getitem__(self, index):
-        for_grad = True
+        for_grad = False
         img_path, label = self.imgs[index]
         img = self.loader(img_path)
 
