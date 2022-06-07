@@ -23,7 +23,8 @@ class CustomizedImageFolder(datasets.ImageFolder):
 class DatasetFromDict(Dataset):
     def __init__(self, imgs, transform=None, loader=pil_loader):
         super(DatasetFromDict, self).__init__()
-        self.imgs = imgs[0:830]
+        self.imgs = imgs
+        # self.imgs = imgs[0:830]
         self.loader = loader
         self.transform = transform
         self.targets = [img[1] for img in imgs]
