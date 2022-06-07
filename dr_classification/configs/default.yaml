@@ -1,16 +1,16 @@
 base:
   data_path: null
-  data_index: '/mnt/sda/haal02-data/Kaggle-Retinopathy-Datasets/dr-data/kaggle_data_dict_truncated.pkl' # alternative way to build dataset. check README for more details
-  save_path: '/mnt/sda/haal02-data/results/classification_results/resnet50/saves'
-  log_path: '/mnt/sda/haal02-data/results/classification_results/resnet50/logs'
+  data_index: '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/fgadr_data_dict.pkl' # specify path of the pickle file containing image paths for test train data
+  save_path: '/mnt/sda/haal02-data/results/classification_results/resnet50_fgadr_07_05_2022/saves' #specify path to save best models
+  log_path: '/mnt/sda/haal02-data/results/classification_results/resnet50_fgadr_07_05_2022/logs' # specify path to save log files
   device: cuda
-  random_seed: 0
+  random_seed: 1
 
 data:
-  num_classes: 5 # number of classes
-  input_size: 224
-  mean: auto # 'auto' or a list of three numbers for RGB
-  std: auto # 'auto' or a list of three numbers for RGB
+  num_classes: 5 # nåçumber of classes
+  input_size: 512
+  mean: [ 0.4577976167201996, 0.2596849203109741, 0.13276457786560059 ] # 'auto' or a list of three numbers for RGB
+  std: [ 0.28394654393196106, 0.18262696266174316, 0.13211798667907715 ] # 'auto' or a list of three numbers for RGB
   sampling_strategy: instance_balanced # instance_balanced / class_balanced / progressively_balanced. ref: https://arxiv.org/abs/1910.09217
   sampling_weights_decay_rate: 0.9 # if sampling_strategy is progressively_balanced, sampling weight will change from class_balanced to instance_balanced
   data_augmentation: # available operations are list in 'data_augmentation_args' below
@@ -24,15 +24,16 @@ data:
 train:
   network: resnet50 # available networks are list in networks.yaml
   pretrained: true # load weights from pre-trained model training on ImageNet
-  checkpoint: null # load weights from other pretrained model
-  epochs: 50
-  batch_size: 32
+  checkpoint: null  # null or load weights from other pretrained model e.g. '/mnt/sda/haal02-data/results/classification_results/resnet50_full_fgadr_playground/saves/final_weights.pt'
+  epochs: 4
+  batch_size: 16
   num_workers: 8 # number of cpus used to load data at each step
   criterion: cross_entropy # available criterions are list in 'criterion_args' below
-  loss_weight: null # null / balance / dynamic / list with shape num_classes. Weights for loss function. Don't use it with weighted sampling!
+#  loss_weight: [0.161, 0.16875, 0.2125, 0.222, 0.23575] # null / balance / dynamic / list with shape num_classes. Weights for loss function. Don't use it with weighted sampling!
+  loss_weight: [2.92, 1.39, 0.5, 0.46, 1.03] # null / balance / dynamic / list with shape num_classes. Weights for loss function. Don't use it with weighted sampling!
   loss_weight_decay_rate: 0 # if loss_weights is dynamic, loss weight will decay from balance to equivalent weights
   warmup_epochs: 0 # set to 0 to disable warmup
-  kappa_prior: false # save model with higher kappa or higher accuracy in validation set
+  kappa_prior: true # save model with higher kappa or higher accuracy in validation set
   save_interval: 5 # the epoch interval of saving model
   eval_interval: 1 # the epoch interval of evaluating model on val dataset
   sample_view: false # save and visualize a batch of images on Tensorboard
@@ -42,7 +43,7 @@ train:
 solver:
   optimizer: SGD # SGD / ADAM
   learning_rate: 0.001 # initial learning rate
-  lr_scheduler: cosine # available schedulers are list in 'scheduler_args' below. please remember to update scheduler_args when number of epoch changes.
+  lr_scheduler: clipped_cosine # available schedulers are list in 'scheduler_args' below. please remember to update scheduler_args when number of epoch changes.
   momentum: 0.9 # only for SGD. set to 0 to disable momentum
   nesterov: true # only for SGD.
   weight_decay: 0.0005 # set to 0 to disable weight decay
@@ -74,7 +75,7 @@ scheduler_args:
     threshold: 0.0001 # threshold for measuring the new optimum
     eps: 0.00001 # minimal decay applied to learning rate
   clipped_cosine:
-    T_max: 50
+    T_max: 25
     min_lr: 0.0001
 
 data_augmentation_args:
@@ -83,20 +84,20 @@ data_augmentation_args:
   vertical_flip:
     prob: 0.5
   color_distortion:
-    prob: 0.5
+    prob: 1.0
     brightness: 0.2
     contrast: 0.2
-    saturation: 0.2
-    hue: 0.1
+    saturation: 0
+    hue: 0
   random_crop: # randomly crop and resize to input_size
-    prob: 0.5
+    prob: 0
     scale: [0.87, 1.15] # range of size of the origin size cropped
     ratio: [0.7, 1.3] # range of aspect ratio of the origin aspect ratio cropped
   rotation:
-    prob: 0.5
+    prob: 1
     degrees: [-180, 180]
   translation:
-    prob: 0.5
+    prob: 1
     range: [0.2, 0.2]
   grayscale: # randomly convert image to grayscale
     prob: 0.5

@@ -1,8 +1,9 @@
 base:
   data_path: null
-  data_index: '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/fgadr_data_dict.pkl' # alternative way to build dataset. check README for more details
-  save_path: '/mnt/sda/haal02-data/results/classification_results/resnet50_fgadr_07_05_2022/saves'
-  log_path: '/mnt/sda/haal02-data/results/classification_results/resnet50_fgadr_07_05_2022/logs'
+#  data_index: '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/fgadr_data_dict.pkl' # specify path of the pickle file containing image paths for test train data
+  data_index: 'configs/fgadr_data_dict.pkl' # specify path of the pickle file containing image paths for test train data
+  save_path: '/mnt/sda/haal02-data/results/classification_results/resnet50_fgadr_07_05_2022/saves' #specify path to save best models
+  log_path: '/mnt/sda/haal02-data/results/classification_results/resnet50_fgadr_07_05_2022/logs' # specify path to save log files
   device: cuda
   random_seed: 1
 
@@ -24,7 +25,7 @@ data:
 train:
   network: resnet50 # available networks are list in networks.yaml
   pretrained: true # load weights from pre-trained model training on ImageNet
-  checkpoint: null  #'/mnt/sda/haal02-data/results/classification_results/resnet50_full_fgadr_playground/saves/final_weights.pt' # null or load weights from other pretrained model
+  checkpoint: null  # null or load weights from other pretrained model e.g. '/mnt/sda/haal02-data/results/classification_results/resnet50_full_fgadr_playground/saves/final_weights.pt'
   epochs: 4
   batch_size: 16
   num_workers: 8 # number of cpus used to load data at each step
