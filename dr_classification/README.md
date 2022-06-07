@@ -29,8 +29,6 @@ Recommended environment:
 
 To install the dependencies, run:
 ```shell
-$ git clone https://github.com/YijinHuang/pytorch-classification.git
-$ cd pytorch-classification
 $ pip install -r requirements.txt
 ```
 
@@ -38,30 +36,7 @@ $ pip install -r requirements.txt
 
 ## How to use
 
-**1. Use one of the following two methods to build your dataset:**
-
-- Folder-form dataset:
-
-Organize your images as follows:
-
-```
-├── your_data_dir
-    ├── train
-        ├── class1
-            ├── image1.jpg
-            ├── image2.jpg
-            ├── ...
-        ├── class2
-            ├── image3.jpg
-            ├── image4.jpg
-            ├── ...
-        ├── class3
-        ├── ...
-    ├── val
-    ├── test
-```
-
-Here, `val` and `test` directory have the same structure of  `train`.  Then replace the value of 'data_path' in BASIC_CONFIG in `configs/default.yaml` with path to your_data_dir and keep 'data_index' as null.
+**1. Use the following method to build your dataset on your server:**
 
 - Dict-form dataset:
 
@@ -96,12 +71,30 @@ pickle.dump(your_data_dict, open('path/to/pickle/file', 'wb'))
 
 Finally, replace the value of 'data_index' in BASIC_CONFIG in `configs/default.yaml` with 'path/to/pickle/file' and set 'data_path' as null.
 
-**2. Update your training configurations and hyperparameters in `configs/default.yaml`.**
+**For FGADR dataset:**
+
+- update 'fgadr_generate_pkl.py' file by changing variables paths in line 7-9:
+    - image_dir = # fgadr image folder e.g. '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/Original_Images'
+    - groundtruth_file = # csv file path containing the groudturths e.g. '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/DR_Seg_Grading_Label.csv'
+    - path_to_save_pkl_file = # path you want to save the dict file in pkl format e.g. '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/fgadr_pkl_file.pkl'
+    
+- And run 'fgadr_generate_pkl.py' 
+```shell
+$ python fgadr_generate_pkl.py
+```
+
+**2. Update your training configurations and hyperparameters in `configs/fgadr.yaml`.**
+- specify the paths for variales in line 3-5
+    - data_index: # specify path of the pickle file containing image paths for test train data
+    - save_path:  #specify path to save best models
+    - log_path:  # specify path to save log files
+
+- you can also update the other hyperparameters if required. 
 
 **3. Run to train:**
 
 ```shell
-$ CUDA_VISIBLE_DEVICES=x python main.py
+$ CUDA_VISIBLE_DEVICES=x python main.py -c configs/fgadr.yaml
 ```
 
 Optional arguments:
