@@ -26,7 +26,7 @@ train:
   pretrained: true # load weights from pre-trained model training on ImageNet
   checkpoint: null  #'/mnt/sda/haal02-data/results/classification_results/resnet50_full_fgadr_playground/saves/final_weights.pt' # null or load weights from other pretrained model
   epochs: 4
-  batch_size: 32
+  batch_size: 16
   num_workers: 8 # number of cpus used to load data at each step
   criterion: cross_entropy # available criterions are list in 'criterion_args' below
 #  loss_weight: [0.161, 0.16875, 0.2125, 0.222, 0.23575] # null / balance / dynamic / list with shape num_classes. Weights for loss function. Don't use it with weighted sampling!
