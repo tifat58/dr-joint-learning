@@ -1,7 +1,7 @@
 base:
   data_path: null
 #  data_index: '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/fgadr_data_dict.pkl' # specify path of the pickle file containing image paths for test train data
-  data_index: 'configs/fgadr_data_dict.pkl' # specify path of the pickle file containing image paths for test train data
+  data_index: 'fgadr_data_dict.pkl' # specify path of the pickle file containing image paths for test train data
   save_path: '/mnt/sda/haal02-data/results/classification_results/resnet50_fgadr_07_05_2022/saves' #specify path to save best models
   log_path: '/mnt/sda/haal02-data/results/classification_results/resnet50_fgadr_07_05_2022/logs' # specify path to save log files
   device: cuda
