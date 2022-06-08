@@ -99,8 +99,8 @@ def get_images_fgadr(image_dir, preprocess='0', phase='train'):
     grid_size = 8
     # image_dir = '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set'
     clahe = 'Clahe'
-    if not os.path.exists(os.path.join(image_dir, clahe, 'Images_CLAHE' + preprocess)):
-        os.mkdir(os.path.join(image_dir, clahe, 'Images_CLAHE' + preprocess))
+    # if not os.path.exists(os.path.join(image_dir, clahe, 'Images_CLAHE' + preprocess)):
+    #     os.mkdir(os.path.join(image_dir, clahe, 'Images_CLAHE' + preprocess))
 
     if not os.path.exists(os.path.join(image_dir, clahe, 'Images_CLAHE' + preprocess)):
         os.mkdir(os.path.join(image_dir, clahe, 'Images_CLAHE' + preprocess, setname))
