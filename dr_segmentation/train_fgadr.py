@@ -214,8 +214,8 @@ if __name__ == '__main__':
         start_epoch = 0
         start_step = 0
 
-    train_image_paths, train_mask_paths = get_images_fgadr_from_pd(image_dir, args.preprocess, phase='train')
-    eval_image_paths, eval_mask_paths = get_images_fgadr_from_pd(image_dir, args.preprocess, phase='eval')
+    train_image_paths, train_mask_paths = get_images_fgadr(image_dir, args.preprocess, phase='train')
+    eval_image_paths, eval_mask_paths = get_images_fgadr(image_dir, args.preprocess, phase='eval')
     print(len(train_image_paths), len(eval_image_paths))
 
     train_dataset = FGADRDataset(train_image_paths, train_mask_paths, config.LESION_IDS[args.lesion], transform=

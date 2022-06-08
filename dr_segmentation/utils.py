@@ -97,7 +97,7 @@ def get_images_fgadr(image_dir, preprocess='0', phase='train'):
 
     limit = 2
     grid_size = 8
-    image_dir = '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set'
+    # image_dir = '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set'
     clahe = 'Clahe'
     if not os.path.exists(os.path.join(image_dir, clahe, 'Images_CLAHE' + preprocess)):
         os.mkdir(os.path.join(image_dir, clahe, 'Images_CLAHE' + preprocess))
@@ -187,7 +187,8 @@ def get_images_fgadr_from_pd(image_dir, preprocess='0', phase='train'):
 
     limit = 2
     grid_size = 8
-    image_dir = '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set'
+    # image_dir = '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set'
+    # '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set'
     clahe = 'Clahe'
     fgadr_df = pd.read_csv(os.path.join(image_dir, 'DR_Seg_Grading_Label_Filtered.csv'))
     # fgadr_df = pd.read_csv(os.path.join(image_dir, 'DR_Seg_Grading_Label_Combined.csv'))
