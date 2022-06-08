@@ -2,8 +2,8 @@ base:
   data_path: null
   data_index: '/home/hnguyen/DATA/SSL-Medical/KOTORI/Eye_Dataset/FGADR/Seg-set/fgadr_pkl_file.pkl' # specify path of the pickle file containing image paths for test train data
 #  data_index: 'fgadr_data_dict.pkl' # specify path of the pickle file containing image paths for test train data
-  save_path: '/home/hnguyen/Research/SSL-Medical/ssl-medical-main/downstream_task/FGADR/dr-joint-learning/results/resnet50_fgadr_07_05_2022/saves' #specify path to save best models
-  log_path: '/home/hnguyen/Research/SSL-Medical/ssl-medical-main/downstream_task/FGADR/dr-joint-learning/results/resnet50_fgadr_07_05_2022/logs' # specify path to save log files
+  save_path: '/home/hnguyen/Research/SSL-Medical/ssl-medical-main/downstream_task/FGADR/classification_results/resnet50_fgadr_07_05_2022/saves' #specify path to save best models
+  log_path: '/home/hnguyen/Research/SSL-Medical/ssl-medical-main/downstream_task/FGADR/classification_results/resnet50_fgadr_07_05_2022/logs' # specify path to save log files
   device: cuda
   random_seed: 1
 
@@ -26,7 +26,7 @@ train:
   network: resnet50 # available networks are list in networks.yaml
   pretrained: true # load weights from pre-trained model training on ImageNet
   checkpoint: '/home/hnguyen/DATA/SSL-Medical/KOTORI/WEIGHTS/PALIWAL_pretrained/checkpoints_swav_100epochs_4A100/converted_vissl_final_model.torch'  # null or load weights from other pretrained model e.g. '/mnt/sda/haal02-data/results/classification_results/resnet50_full_fgadr_playground/saves/final_weights.pt'
-  epochs: 4
+  epochs: 20
   batch_size: 16
   num_workers: 8 # number of cpus used to load data at each step
   criterion: cross_entropy # available criterions are list in 'criterion_args' below
