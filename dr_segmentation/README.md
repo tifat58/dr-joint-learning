@@ -1,6 +1,6 @@
 To train the model for FGADR, run ```python train_fgadr.py --seed 765 --preprocess '2' --lesion 'EX'``` for training a UNet model to segment Hard Exudates lesion images with preprocessing method of Contrast Enhancement using random seed 765.
 
-
+- ```lesion: MA, HE, EX, SE, SG```, SG for combined segmentation masks
 
 The meaning of each preprocessing index is indicated in the following table.
 
