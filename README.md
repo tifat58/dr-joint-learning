@@ -30,4 +30,4 @@ $ pip install -r requirements.txt
 
 **For segmentation**
 
-- to be uploaded
+- Follow readme.md inside 'dr_segmentaion' instructions
