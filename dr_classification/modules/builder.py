@@ -88,7 +88,7 @@ def generate_model(cfg):
 
     if cfg.train.checkpoint:
         weights = torch.load(cfg.train.checkpoint)
-        model.load_state_dict(weights, strict=True)
+        model.load_state_dict(weights, strict=False)
         print_msg('Load weights form {}'.format(cfg.train.checkpoint))
 
     if cfg.base.device == 'cuda' and torch.cuda.device_count() > 1:

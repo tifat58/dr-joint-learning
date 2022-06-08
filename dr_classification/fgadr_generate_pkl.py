@@ -4,9 +4,9 @@ import pickle
 
 
 # update the paths accordingly
-image_dir = '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/Original_Images'
-groundtruth_file = '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/DR_Seg_Grading_Label.csv'
-path_to_save_pkl_file = '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/fgadr_pkl_file.pkl' # use this saved pkl file path in yaml config file
+image_dir = '/home/hnguyen/DATA/SSL-Medical/KOTORI/Eye_Dataset/FGADR/Seg-set/Original_Images'
+groundtruth_file = '/home/hnguyen/DATA/SSL-Medical/KOTORI/Eye_Dataset/FGADR/Seg-set/DR_Seg_Grading_Label.csv'
+path_to_save_pkl_file = '/home/hnguyen/DATA/SSL-Medical/KOTORI/Eye_Dataset/FGADR/Seg-set/fgadr_pkl_file.pkl' # use this saved pkl file path in yaml config file
 
 
 df = pd.read_csv(groundtruth_file)
