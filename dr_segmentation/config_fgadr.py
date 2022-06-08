@@ -4,7 +4,7 @@ LESION_IDS = {'EX':0, 'HE':1, 'MA':2, 'SE':3, 'SG':4}
 DATASET_NAME = 'FGADR'
 TATL = 'NO_TATL' #'TATL'
 #Modify the general parameters.
-IMAGE_DIR = '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set'
+IMAGE_DIR = '/home/hnguyen/DATA/SSL-Medical/KOTORI/Eye_Dataset/FGADR/Seg-set'
 NET_NAME = 'unet'
 IMAGE_SIZE = 512
 
