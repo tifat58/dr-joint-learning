@@ -193,7 +193,13 @@ def get_images_fgadr_from_pd(image_dir, preprocess='0', phase='train'):
     fgadr_df = pd.read_csv(os.path.join(image_dir, 'DR_Seg_Grading_Label_Filtered.csv'))
     # fgadr_df = pd.read_csv(os.path.join(image_dir, 'DR_Seg_Grading_Label_Combined.csv'))
     # imgs = glob.glob(os.path.join(image_dir, clahe, 'Images_CLAHE' + preprocess, '*.png'))
-    imgs = list(fgadr_df['clahe0'])
+    imgs = []
+    for idx, row in fgadr_df.iterrows():
+        img_name = row['Image_Name']
+        img_path = os.path.join(image_dir, 'Original_Images', img_name)
+        imgs.append(img_path)
+        
+#     imgs = list(fgadr_df['clahe0'])
 
     # imgs.sort()
     mask_paths = []
