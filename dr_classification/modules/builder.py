@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from torchvision import models
-from self_attention_cv import ResNet50ViT
+from self_attention_cv import ResNet50ViT, ViT
 from modules.GAIN import GAIN
 
 from utils.func import print_msg, select_out_features
@@ -86,9 +86,17 @@ def generate_model(cfg):
         cfg.train.pretrained
     )
 
+#     model.load_state_dict(torch.load('/home/hnguyen/DATA/SSL-Medical/KOTORI/Eye_Dataset/dr-joint-learning/classify_no_train/final_weights.pt'), strict=True) # specify weight path in the config file for models
     if cfg.train.checkpoint:
-        weights = torch.load(cfg.train.checkpoint)
-        model.load_state_dict(weights, strict=False)
+        try:
+            weights = torch.load(cfg.train.checkpoint)
+            model.load_state_dict(weights, strict=False)
+        except:
+            weights = torch.load(cfg.train.checkpoint)
+            trunk_weights = weights["classy_state_dict"]["base_model"]["model"]["trunk"]
+            prefix = "_feature_blocks."
+            trunk_weights = {k[len(prefix):] : w for k, w in trunk_weights.items()}
+            model.load_state_dict(trunk_weights, strict=False)
         print_msg('Load weights form {}'.format(cfg.train.checkpoint))
 
     if cfg.base.device == 'cuda' and torch.cuda.device_count() > 1:
@@ -111,6 +119,11 @@ def build_model(network, num_classes, pretrained=False):
                             blocks=6, num_classes=num_classes,
                             dim_linear_block=64, dim=64)
         print("vit resnet50 loaded")
+        return model
+    
+    if 'vit' in network:
+        model = ViT(img_dim=256, in_channels=3, patch_dim=16, num_classes=num_classes,dim=512)
+        print("vit model loaded")
         return model
 
     model = BUILDER[network](pretrained=pretrained)
