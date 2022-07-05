@@ -22,5 +22,5 @@ available_network:
   - shufflenet_1_0
   - shufflenet_1_5
   - shufflenet_2_0
-  - resnet50_vit
+  - vit
   - -gain
