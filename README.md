@@ -1,4 +1,8 @@
 # dr-joint-learning
+**Official Repository for DRG-Net**
+
+Tusfiqur, Hasan Md, Duy MH Nguyen, Mai TN Truong, Triet A. Nguyen, Binh T. Nguyen, Michael Barz, Hans-Juergen Profitlich et al. "DRG-Net: interactive joint learning of multi-lesion segmentation and classification for diabetic retinopathy grading." arXiv preprint arXiv:2212.14615 (2022).
+https://arxiv.org/abs/2212.14615
 
 ## Installation
 
