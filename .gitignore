@@ -1,2 +1,11 @@
 __pycache__/.
 dr_segmentation/results/*
+# Ignore Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+
+# Optional: ignore virtual environments
+venv/
+.env/
+**/*.pyc

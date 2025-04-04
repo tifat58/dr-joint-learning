@@ -15,7 +15,7 @@ import torch.nn.functional as F
 from torch import optim
 from torch.optim import lr_scheduler
 
-import config
+import config as config
 from unet import UNet
 from utils import get_images
 from dataset import IDRIDDataset
