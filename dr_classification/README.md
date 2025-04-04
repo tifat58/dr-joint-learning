@@ -1,8 +1,6 @@
-# Pytorch Classification
+# DRG-Net Classification 
 
-- A general, feasible and extensible framework for 2D image classification.
-
-
+- Fundus image classification for diabetic retinopathy grading 
 
 ## Features
 
@@ -13,7 +11,6 @@
 - Different learning rate schedulers and warmup support
 - Data augmentation
 - Multiple GPUs support
-
 
 
 
@@ -28,7 +25,7 @@ Define a dict as follows:
 ```python
 your_data_dict = {
     'train': [
-        ('path/to/image1', 0), # use int. to represent the class of images (start from 0)
+        ('path/to/image1', 0), # use integer to represent the class of images (start from 0)
         ('path/to/image2', 0),
         ('path/to/image3', 1),
         ('path/to/image4', 2),
@@ -57,9 +54,9 @@ Finally, replace the value of 'data_index' in BASIC_CONFIG in `configs/default.y
 **For FGADR dataset:**
 
 - update 'fgadr_generate_pkl.py' file by changing variables paths in line 7-9:
-    - image_dir = # fgadr image folder e.g. '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/Original_Images'
-    - groundtruth_file = # csv file path containing the groudturths e.g. '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/DR_Seg_Grading_Label.csv'
-    - path_to_save_pkl_file = # path you want to save the dict file in pkl format e.g. '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/fgadr_pkl_file.pkl'
+    - image_dir = # fgadr image folder e.g. '/home/FGADR-Seg-Set/Seg-set/Original_Images'
+    - groundtruth_file = # csv file path containing the groudturths e.g. '/home/FGADR-Seg-Set/Seg-set/DR_Seg_Grading_Label.csv'
+    - path_to_save_pkl_file = # path you want to save the dict file in pkl format e.g. '/home/FGADR-Seg-Set/Seg-set/fgadr_pkl_file.pkl'
     
 - And run 'fgadr_generate_pkl.py' 
 ```shell
@@ -72,7 +69,7 @@ $ python fgadr_generate_pkl.py
     - save_path:  #specify path to save best models
     - log_path:  # specify path to save log files
 
-- you can also update the other hyperparameters if required. 
+**you can specify models and update the other hyperparameters in the .yaml file if required.**
 
 **3. Run to train:**
 
