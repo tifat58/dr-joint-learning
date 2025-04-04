@@ -34,10 +34,11 @@ https://ieee-dataport.org/open-access/indian-diabetic-retinopathy-image-dataset-
 
 **For classification**
 
-- dr_classification folder contains scripts for dr grading classification task.
+- 'dr_classification' folder contains scripts for dr grading classification task.
 - Follow readme.md inside 'dr_classification' for instructions.
 
 
 **For segmentation**
 
-- Follow readme.md inside 'dr_segmentaion' instructions
+- 'dr_segmentation' folder contains scripts for dr segmentation task.
+-  Follow readme.md inside 'dr_segmentaion' instructions
