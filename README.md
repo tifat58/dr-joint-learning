@@ -23,7 +23,13 @@ To install the dependencies create a virtualenv and run:
 ```shell
 $ pip install -r requirements.txt
 ```
+**Datasets**
 
+Datasets used in this paper can be accessed from the following links:
+- Indian Diabetic Retinopathy Image Dataset (IDRiD)
+https://ieee-dataport.org/open-access/indian-diabetic-retinopathy-image-dataset-idrid
+- FGADR Dataset - Look Deeper into Eyes. https://csyizhou.github.io/FGADR/
+- EyePACS Dataset - https://paperswithcode.com/dataset/kaggle-eyepacs
 
 
 **For classification**
