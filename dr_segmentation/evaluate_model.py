@@ -114,18 +114,19 @@ if __name__ == '__main__':
     model.to(device)
 
     test_image_paths, test_mask_paths = get_images(image_dir, args.preprocess, phase='eval')
+    # test_image_paths, test_mask_paths = get_images_fgadr(image_dir, args.preprocess, phase='eval')
     test_dataset = IDRIDDataset(test_image_paths, test_mask_paths, config.LESION_IDS[args.lesion])
     print(test_image_paths)
     test_loader = DataLoader(test_dataset, 1, shuffle=False)
     auc_result = eval_model(model, test_loader)
-    print(auc_result)
+    print("AUC: ", auc_result)
 
-    # fgadr test
-    f_test_image_paths, f_test_mask_paths = get_images_fgadr_from_pd(image_dir, args.preprocess, phase='test')
-    f_test_dataset = FGADRDataset(f_test_image_paths, f_test_mask_paths, config.LESION_IDS[args.lesion])
-
-    f_test_loader = DataLoader(f_test_dataset, 1, shuffle=False)
-    f_auc_result = eval_model(model, f_test_loader)
-    print("FGADR AUC: ", f_auc_result)
+    # # fgadr test
+    # f_test_image_paths, f_test_mask_paths = get_images_fgadr_from_pd(image_dir, args.preprocess, phase='test')
+    # f_test_dataset = FGADRDataset(f_test_image_paths, f_test_mask_paths, config.LESION_IDS[args.lesion])
+    #
+    # f_test_loader = DataLoader(f_test_dataset, 1, shuffle=False)
+    # f_auc_result = eval_model(model, f_test_loader)
+    # print("FGADR AUC: ", f_auc_result)
 
     

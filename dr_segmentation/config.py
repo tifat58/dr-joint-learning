@@ -4,7 +4,8 @@
 LESION_IDS = {'EX':0, 'HE':1, 'MA':2, 'SE':3, 'SG':4}
 
 #Modify the general parameters.
-IMAGE_DIR = '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/Clahe/Images_CLAHE'
+# IMAGE_DIR = '/mnt/sda/haal02-data/FGADR-Seg-Set/Seg-set/Clahe/Images_CLAHE'
+IMAGE_DIR = '/home/haal02/projects/DR-segmentation/HEDNet_cGAN/data/IDRID_Segmentation/'
 NET_NAME = 'unet'
 IMAGE_SIZE = 512
 
